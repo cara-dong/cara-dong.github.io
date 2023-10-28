@@ -1,11 +1,12 @@
 ---
-title: "Flexdashboard for NYC Restaurant Inspections"
+title: "Flexdashboard"
 output: 
   flexdashboard::flex_dashboard:
     orientation: columns
     vertical_layout: fill
 ---
-```{r message=FALSE}
+
+```{r setup, include=FALSE}
 library(tidyverse)
 library(p8105.datasets)
 library(RColorBrewer)
@@ -13,7 +14,7 @@ library(plotly)
 library(flexdashboard)
 ```
 
-```{r message=FALSE, warning=FALSE}
+```{r}
 nyc_restaurant = 
   rest_inspec |>
   drop_na() |>
@@ -21,10 +22,11 @@ nyc_restaurant =
   mutate(year = year(inspection_date))
 ```
 
-{data-width=650}
+Column {data-width=650}
 -----------------------------------------------------------------------
 
 ### Chart A
+
 ```{r message=FALSE, warning=FALSE}
 nyc_boxplot = 
   nyc_restaurant |>
@@ -34,10 +36,10 @@ nyc_boxplot =
   theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
   labs(x = "Borough", y = "Score", title = "Inspection Score of Restaurants in NYC Boroughs", fill = "Borough")
 
-ggplotly(nyc_boxplot)
+nyc_boxplot
 ```
 
-{data-width=350}
+Column {data-width=350}
 -----------------------------------------------------------------------
 
 ### Chart B
@@ -55,7 +57,7 @@ nyc_barchart =
   theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
   labs(x = "Grade Levels", y = "Number of Restaurants", title = "Number of Restaurants per Grade Level in NYC Boroughs")
 
-ggplotly(nyc_barchart)
+nyc_barchart
 ```
 
 ### Chart C
@@ -72,5 +74,5 @@ nyc_lineplot =
   geom_line() +
   labs(x = "Inspection Date", y = "Average Score", title = "Average Restaurant Inspection Score in 2017 across NYC Boroughs", color = "Borough")
 
-ggplotly(nyc_lineplot)
+nyc_lineplot
 ```
