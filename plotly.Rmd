@@ -22,7 +22,7 @@ nyc_restaurant =
   mutate(year = year(inspection_date))
 ```
 
-Column {data-width=650}
+Column {data-width=320}
 -----------------------------------------------------------------------
 
 ### Chart A
@@ -36,10 +36,10 @@ nyc_boxplot =
   theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
   labs(x = "Borough", y = "Score", title = "Inspection Score of Restaurants in NYC Boroughs", fill = "Borough")
 
-nyc_boxplot
+ggplotly(nyc_boxplot)
 ```
 
-Column {data-width=350}
+Column {data-width=340}
 -----------------------------------------------------------------------
 
 ### Chart B
@@ -57,8 +57,11 @@ nyc_barchart =
   theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
   labs(x = "Grade Levels", y = "Number of Restaurants", title = "Number of Restaurants per Grade Level in NYC Boroughs")
 
-nyc_barchart
+ggplotly(nyc_barchart)
 ```
+
+Column {data-width=340}
+-----------------------------------------------------------------------
 
 ### Chart C
 
@@ -74,5 +77,5 @@ nyc_lineplot =
   geom_line() +
   labs(x = "Inspection Date", y = "Average Score", title = "Average Restaurant Inspection Score in 2017 across NYC Boroughs", color = "Borough")
 
-nyc_lineplot
+ggplotly(nyc_lineplot)
 ```
