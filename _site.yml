@@ -7,6 +7,8 @@ navbar:
       href: about.html
     - text: "Experience"
       href: experience.html
+    - text: "Flexdashboard"
+      href: flexdashboard.html
     - icon: fa-envelope fa-lg
       href: mailto:<md4270@cumc.columbia.edu>
     - icon: fa-github fa-lg
