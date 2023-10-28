@@ -6,7 +6,7 @@ output:
     vertical_layout: fill
 ---
 
-```{r setup, include=FALSE}
+```{r setup, message=FALSE}
 library(tidyverse)
 library(p8105.datasets)
 library(RColorBrewer)
@@ -14,7 +14,7 @@ library(plotly)
 library(flexdashboard)
 ```
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 nyc_restaurant = 
   rest_inspec |>
   drop_na() |>
