@@ -5,9 +5,8 @@ output:
     toc: true
     toc_float: true
 ---
+```{r, echo=FALSE, out.width = "50%"}
+knitr::include_graphics("images/welcome.gif")
+```
 
-![](images/welcome.gif)
-
-## Documents
-
-[GitHub](https://github.com/cara-dong)
+Congratulations on discovering me! Hope you enjoy navigating through my secret place :)

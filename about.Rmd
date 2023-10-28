@@ -6,6 +6,8 @@ output:
     toc_float: true
 ---
 ## Who am I...
-![](images/kungfu panda.jpeg)
+```{r, echo=FALSE, out.width = "50%"}
+knitr::include_graphics("images/kungfu panda.jpeg")
+```
 
 I'm Manye Dong, a passionate pursuer of perfection who tries to fit herself into the intersection of technology, literature and social good for the past four years.

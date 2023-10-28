@@ -1,0 +1,22 @@
+---
+title: "Experience"
+output: 
+  html_document:
+    toc: true
+    toc_float: true
+---
+## Academic
+```{r, echo=FALSE, out.width = "50%"}
+knitr::include_graphics("images/school.jpeg")
+```
+
+I'm currently pursuing a Master of Science's degree in Biostatistics at Columbia University. 
+
+Before this, I graduated from UC Berkeley with a Bachelor's degree in Data Science and Comparative Literature.
+
+## Professional
+```{r, echo=FALSE, out.width = "50%"}
+knitr::include_graphics("images/professional.jpeg")
+```
+
+[Resume](images/Manye C. Dong Resume.pdf)
