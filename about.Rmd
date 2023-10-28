@@ -1,0 +1,11 @@
+---
+title: "About"
+output: 
+  html_document:
+    toc: true
+    toc_float: true
+---
+## Who am I...
+![](images/kungfu panda.jpeg)
+
+I'm Manye Dong, a passionate pursuer of perfection who tries to fit herself into the intersection of technology, literature and social good for the past four years.
