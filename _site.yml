@@ -7,7 +7,7 @@ navbar:
       href: about.html
     - text: "Experience"
       href: experience.html
-    - text: "Flexdashboard"
+    - text: "Dashboard"
       href: plotly.html
     - icon: fa-envelope fa-lg
       href: mailto:<md4270@cumc.columbia.edu>

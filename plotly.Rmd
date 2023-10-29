@@ -22,7 +22,7 @@ nyc_restaurant =
   mutate(year = year(inspection_date))
 ```
 
-Column {data-width=320}
+Column {data-width=550}
 -----------------------------------------------------------------------
 
 ### Chart A
@@ -39,7 +39,7 @@ nyc_boxplot =
 ggplotly(nyc_boxplot)
 ```
 
-Column {data-width=340}
+Column {data-width=450}
 -----------------------------------------------------------------------
 
 ### Chart B
@@ -59,9 +59,6 @@ nyc_barchart =
 
 ggplotly(nyc_barchart)
 ```
-
-Column {data-width=340}
------------------------------------------------------------------------
 
 ### Chart C
 
