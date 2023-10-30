@@ -18,7 +18,7 @@ library(flexdashboard)
 nyc_restaurant = 
   rest_inspec |>
   drop_na() |>
-  filter(grade != "NA" & boro != "Missing") |>
+  filter(grade != "NA" & boro != "Missing" & grade != "Not Yet Graded") |>
   mutate(year = year(inspection_date))
 ```
 
@@ -49,15 +49,23 @@ nyc_barchart =
   nyc_restaurant |>
   group_by(boro, grade) |>
   summarise(num_per_grade = n()) |>
-  ggplot(aes(x = grade, y = num_per_grade, color=boro, fill=boro)) +
-  geom_bar(stat = "identity") +
-  scale_color_brewer(palette = "Set2") +
-  scale_fill_brewer(palette = "Set2") +
-  facet_wrap(~boro, scales="free_x") +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
-  labs(x = "Grade Levels", y = "Number of Restaurants", title = "Number of Restaurants per Grade Level in NYC Boroughs")
+  pivot_wider(
+    names_from = "boro", 
+    values_from = "num_per_grade"
+  )
 
-ggplotly(nyc_barchart)
+colnames(nyc_barchart)[6] <- "STATEN_ISLAND"
+
+nyc_barchart = 
+  nyc_barchart |>
+  plot_ly(x = ~grade, y = ~BRONX, type = 'bar', name = 'Bronx') |>
+  add_trace(y = ~BROOKLYN, name = 'Brooklyn') |>
+  add_trace(y = ~MANHATTAN, name = 'Manhattan') |>
+  add_trace(y = ~QUEENS, name = 'Queens') |>
+  add_trace(y = ~STATEN_ISLAND, name = 'Staten Island') |>
+  layout(yaxis = list(title = 'Count'), xaxis = list(title = 'Grade Level'), title = "Number of Restaurants per Grade Level in NYC Boroughs")
+
+nyc_barchart
 ```
 
 ### Chart C
@@ -68,11 +76,22 @@ nyc_lineplot =
   filter(year==2017) |>
   group_by(boro, inspection_date) |>
   summarise(avg_score = mean(score, na.rm = FALSE)) |>
-  ggplot(aes(x = inspection_date, y = avg_score, color = boro)) +
-  scale_color_brewer(palette = "Set1") +
-  facet_wrap(~boro, scales="free_x") +
-  geom_line() +
-  labs(x = "Inspection Date", y = "Average Score", title = "Average Restaurant Inspection Score in 2017 across NYC Boroughs", color = "Borough")
+  pivot_wider(
+    names_from = "boro", 
+    values_from = "avg_score"
+  )
 
-ggplotly(nyc_lineplot)
+colnames(nyc_lineplot)[6] <- "STATEN_ISLAND"
+
+nyc_lineplot  = 
+  nyc_lineplot|>
+  drop_na() |>
+  plot_ly(x = ~inspection_date, y = ~BRONX, name = 'Bronx', type = 'scatter', mode = 'lines') |>
+  add_trace(y = ~BROOKLYN, name = 'Brooklyn', mode = 'lines') |>
+  add_trace(y = ~MANHATTAN, name = 'Manhattan', mode = 'lines') |>
+  add_trace(y = ~QUEENS, name = 'Queens', mode = 'lines') |>
+  add_trace(y = ~STATEN_ISLAND, name = 'Staten Island', mode = 'lines') |>
+  layout(yaxis = list(title = 'Average Score'), xaxis = list(title = 'Inspection Date'), title = "Average Restaurant Score by Date in 2017 in NYC Boroughs")
+
+nyc_lineplot
 ```
