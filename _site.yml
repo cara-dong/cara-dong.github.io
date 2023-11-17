@@ -17,4 +17,4 @@ navbar:
       href: https://www.linkedin.com/in/manye-dong215/
 output:
   html_document:
-    theme: cerulean
+    theme: simplex
